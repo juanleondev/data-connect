@@ -1,0 +1,44 @@
+E0526 17:58:10.575800    1725 load.go:21] Reloading schema and connectors...
+E0526 17:58:10.616774    1725 migrate.go:25] Running migration SQL:
+Step 1: CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+Step 2: CREATE TABLE "public"."user" ("uid" text NOT NULL, "address" text NOT NULL, "name" text NOT NULL, PRIMARY KEY ("uid"))
+Step 3: CREATE TABLE "public"."email" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "from_uid" text NOT NULL, "date" date NOT NULL, "subject" text NOT NULL, "text" text NOT NULL, PRIMARY KEY ("id"), CONSTRAINT "email_from_uid_fkey" FOREIGN KEY ("from_uid") REFERENCES "public"."user" ("uid"))
+Step 4: CREATE TABLE "public"."email_meta" ("user_uid" text NOT NULL, "email_id" uuid NOT NULL, "labels" text[] NULL, "muted" boolean NOT NULL, "read" boolean NOT NULL, "snoozed" date NULL, "starred" boolean NOT NULL, PRIMARY KEY ("user_uid", "email_id"), CONSTRAINT "email_meta_email_id_fkey" FOREIGN KEY ("email_id") REFERENCES "public"."email" ("id"), CONSTRAINT "email_meta_user_uid_fkey" FOREIGN KEY ("user_uid") REFERENCES "public"."user" ("uid"))
+Step 5: CREATE TABLE "public"."recipient" ("email_id" uuid NOT NULL, "user_uid" text NOT NULL, PRIMARY KEY ("email_id", "user_uid"), CONSTRAINT "recipient_email_id_fkey" FOREIGN KEY ("email_id") REFERENCES "public"."email" ("id"), CONSTRAINT "recipient_user_uid_fkey" FOREIGN KEY ("user_uid") REFERENCES "public"."user" ("uid"))
+E0526 17:58:10.742443    1725 load.go:95] Finished reloading
+E0526 18:03:25.058075    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:25.190868    1725 load.go:95] Finished reloading
+E0526 18:03:29.970730    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:30.114713    1725 load.go:95] Finished reloading
+E0526 18:03:31.598544    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:31.748495    1725 load.go:95] Finished reloading
+E0526 18:03:35.364799    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:35.447693    1725 load.go:81] Could not deploy connector email: connector/queries.gql:2: Unexpected )
+E0526 18:03:35.481300    1725 load.go:88] Errors generating SDK: GenerateSDK cannot parse connector "email": connector/queries.gql:2: Unexpected )
+E0526 18:03:35.481364    1725 load.go:95] Finished reloading
+E0526 18:03:40.415637    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:40.523091    1725 load.go:81] Could not deploy connector email: connector/queries.gql:2: Expected value of type "User_Filter", found name.
+E0526 18:03:40.570384    1725 load.go:88] Errors generating SDK: GenerateSDK cannot parse connector "email": connector/queries.gql:2: Expected value of type "User_Filter", found name.
+E0526 18:03:40.570434    1725 load.go:95] Finished reloading
+E0526 18:03:44.640674    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:44.712979    1725 load.go:81] Could not deploy connector email: connector/queries.gql:2: Expected Name, found =
+E0526 18:03:44.750355    1725 load.go:88] Errors generating SDK: GenerateSDK cannot parse connector "email": connector/queries.gql:2: Expected Name, found =
+E0526 18:03:44.750417    1725 load.go:95] Finished reloading
+E0526 18:03:45.810626    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:45.890369    1725 load.go:81] Could not deploy connector email: connector/queries.gql:2: Expected Name, found =
+E0526 18:03:45.917672    1725 load.go:88] Errors generating SDK: GenerateSDK cannot parse connector "email": connector/queries.gql:2: Expected Name, found =
+E0526 18:03:45.917732    1725 load.go:95] Finished reloading
+E0526 18:03:55.258732    1725 load.go:21] Reloading schema and connectors...
+E0526 18:03:55.333175    1725 load.go:81] Could not deploy connector email: connector/queries.gql:4: Expected :, found }
+E0526 18:03:55.365193    1725 load.go:88] Errors generating SDK: GenerateSDK cannot parse connector "email": connector/queries.gql:4: Expected :, found }
+E0526 18:03:55.365612    1725 load.go:95] Finished reloading
+E0526 18:04:01.852906    1725 load.go:21] Reloading schema and connectors...
+E0526 18:04:01.931965    1725 load.go:81] Could not deploy connector email: connector/queries.gql:3: Expected :, found }
+E0526 18:04:01.963927    1725 load.go:88] Errors generating SDK: GenerateSDK cannot parse connector "email": connector/queries.gql:3: Expected :, found }
+E0526 18:04:01.963978    1725 load.go:95] Finished reloading
+E0526 18:04:06.265792    1725 load.go:21] Reloading schema and connectors...
+E0526 18:04:06.382140    1725 load.go:95] Finished reloading
+E0526 18:04:08.641621    1725 load.go:21] Reloading schema and connectors...
+E0526 18:04:08.763105    1725 load.go:95] Finished reloading
+E0526 18:04:19.165621    1725 load.go:21] Reloading schema and connectors...
+E0526 18:04:19.279295    1725 load.go:95] Finished reloading
